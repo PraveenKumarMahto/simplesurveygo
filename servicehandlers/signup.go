@@ -2,6 +2,7 @@ package servicehandlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"simplesurveygo/dao"
@@ -30,6 +31,7 @@ func (p SignupHandler) Post(r *http.Request) SrvcRes {
 	}
 	var cred dao.UserCredentials
 	err = json.Unmarshal(body, &cred)
+	fmt.Println(cred)
 	res := dao.SignupUser(cred)
 	if res == "User Already Present" {
 		return SimpleBadRequest(res)

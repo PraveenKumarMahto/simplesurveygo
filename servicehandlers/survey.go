@@ -20,7 +20,6 @@ func (p SurveyHandler) Get(r *http.Request) SrvcRes {
 	ids, present := params["name"]
 
 	fmt.Println(params)
-
 	if present {
 		id := ids[0]
 		return Response200OK(dao.GetSurveyByName(id))
